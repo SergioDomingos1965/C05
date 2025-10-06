@@ -1,9 +1,9 @@
 NAME = ex01
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp Bureaucrat.cpp form.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADRS = Bureaucrat.hpp
+HEADRS = Bureaucrat.hpp form.hpp
 
 all:$(NAME)
 

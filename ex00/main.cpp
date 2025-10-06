@@ -6,7 +6,7 @@ int main()
     {
         Bureaucrat a("Ana", 1);
         std::cout <<a<<std::endl;
-        a.incremetGrade();
+        a.decrementGrade();
     }
     catch(std::exception &e)
     {

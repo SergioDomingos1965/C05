@@ -62,8 +62,14 @@ std::string Bureaucrat::getName()const
     return this->name;
 }
 
+void Bureaucrat::signForm(Form &form)
+{
+    form.beSigned(*this);
+}
+
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &a)
 {
     out << a.getName() << ", bureacrat grade " << a.getGrade();
     return out;
 }
+
