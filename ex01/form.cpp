@@ -5,7 +5,7 @@ Form::Form(std::string name, bool isSigned, int gradeToSign, int gradeToExecute)
     std::cout <<"Form constructor parametrized called "<<std::endl;
     if(this->gradeToSign < 1 || this->gradeToSign < 1)
         throw GradeTooLowException();
-    else if(this->gradeToExecute > 150 || this->gradeToExecute > 150)
+    else if(this->gradeToExecute > 150 || this->gradeToSign > 150)
          throw GradeTooHighException();
 }
 
@@ -14,36 +14,47 @@ Form::~Form()
     std::cout <<"Form destructor called ."<<std::endl;
 }
 
-Form::Form(const Form &src):gradeToSign(gradeToSign),gradeToExecute(gradeToExecute)
+Form::Form(const Form &src):gradeToSign(src.gradeToSign),gradeToExecute(src.gradeToExecute)
 {
     *this = src;
 }
 
-Form::operator=(const Form &src)
+Form &Form::operator=(const Form &src)
 {
     if(this != &src)
     {
-        this->name = src.name;
-        this->gradeToExecute = src.gradeToExecute;
-        this->gradeToSign = src.gradeToSign;
+        this->isSigned = src.isSigned;
     }
     return *this;
 }
 
-Form::beSigned(Bureaucrat &b)
+ void Form::beSigned(Bureaucrat &b)
 {
     if(b.getGrade() <= this->gradeToSign)
-        std::cout <<"assinaaado"<<std::endl;
+    {
+        std::cout <<b.getName()<<" signed "<<this->name<<std::endl;
+    }
     else
-        std::cout <<"nao assinado"<<std::endl;
+        std::cout <<b.getName()<<" couldn't sign "<<this->name<< " lack of grade"<<std::endl;
 }
-
-const char *Form::GradeTooLowException::what const throw()
+int Form::get_gradeToExecute( )
+{
+    return this->gradeToExecute;
+}
+int Form::get_gradeToSign()
+{   
+    return this->gradeToSign;
+}
+bool Form::get_isSigned()
+{
+    return this->isSigned;
+}
+const char *Form::GradeTooLowException::what() const throw()
 {
     return "Grade too Low";
 }
 
-const char *Form::GradeTooHighException:: what const  throw()
+const char *Form::GradeTooHighException:: what() const  throw()
 {
     return "Grade too Hig";
 }

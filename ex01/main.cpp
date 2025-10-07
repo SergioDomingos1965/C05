@@ -4,9 +4,10 @@ int main()
 {
     try
     {
+        Form b("Relatorio", true, 153, 10 );
         Bureaucrat a("Ana", 1);
         std::cout <<a<<std::endl;
-        a.incremetGrade();
+        a.signForm(b);
     }
     catch(std::exception &e)
     {
