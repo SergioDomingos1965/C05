@@ -1,4 +1,4 @@
-#include "form.hpp"
+#include "AForm.hpp"
 
 AForm::AForm(std::string name, bool isSigned, int gradeToSign, int gradeToExecute):name(name),isSigned(isSigned),gradeToSign(gradeToSign), gradeToExecute(gradeToExecute)
 {
@@ -28,7 +28,7 @@ AForm &AForm::operator=(const AForm &src)
     return *this;
 }
 
- void AForm::beSigned(Bureaucrat &b)
+void AForm::beSigned(Bureaucrat &b)
 {
     if(b.getGrade() <= this->gradeToSign)
     {
@@ -67,4 +67,8 @@ std::ostream &operator<<(std::ostream &o, const AForm &f)
 const char *AForm::GradeTooHighException:: what() const  throw()
 {
     return "Grade too Hig";
+}
+const char *AForm::FormNotSignedException::what() const throw()
+{
+        return "Form not signed";
 }

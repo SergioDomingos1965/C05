@@ -5,7 +5,7 @@
 #include <string>
 #include "form.hpp"
 
-class Form;
+class AForm;
     class Bureaucrat
     {
         private: 
@@ -20,7 +20,7 @@ class Form;
             int getGrade()const;
             void incremetGrade();
             void decrementGrade();
-            void signForm(Form &form);
+            void signForm(AForm &form);
 
         class GradeTooHighException: public std::exception
         {

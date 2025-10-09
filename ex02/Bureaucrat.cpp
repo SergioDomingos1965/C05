@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "form.hpp"
+#include "AForm.hpp"
 Bureaucrat::Bureaucrat(std::string name, int grade):name(name),grade(grade)
 {
     std::cout <<"Bureaucrat parameterized constructor called ."<<std::endl;
@@ -62,7 +62,7 @@ std::string Bureaucrat::getName()const
     return this->name;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
     try
     {
@@ -70,7 +70,20 @@ void Bureaucrat::signForm(Form &form)
     }
     catch(const std::exception &e)
     {
-       std::cout << this->name <<" couldn't sign "<< form.get_name() << " lack of grade"<<e.what()<<std::endl;
+       std::cout << this->name <<" couldn't sign "<< form.get_name() << " lack of grade "<<e.what()<<std::endl;
+    }
+    
+}
+void Bureaucrat::executeForm(AForm const & form)const
+{
+    try
+    {
+        form.execute(*this);
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << name << " couldn’t execute " << form.get_name()
+                  << " because " << e.what() << std::endl;
     }
     
 }
