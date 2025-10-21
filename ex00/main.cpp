@@ -4,9 +4,13 @@ int main()
 {
     try
     {
-        Bureaucrat a("Ana", 1);
+        Bureaucrat a("Ana", 2);
         std::cout <<a<<std::endl;
-        a.decrementGrade();
+        a.incremetGrade();
+
+        Bureaucrat b("Bela", 2);
+        b.decrementGrade();
+        std::cout <<b<<std::endl;
     }
     catch(std::exception &e)
     {
